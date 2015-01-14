@@ -1,0 +1,107 @@
+2014/09/16 16:58:19 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'callofcombat'' in /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CDbHttpSession.php(175): CModule->getComponent('db')
+#4 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CDbHttpSession.php(199): CDbHttpSession->getDbConnection()
+#5 [internal function]: CDbHttpSession->openSession('/var/lib/php5/s...', 'callofcombat')
+#6 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CHttpSession.php(114): session_start()
+#7 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CHttpSession.php(88): CHttpSession->open()
+#8 /home/zander/htdocs/www/projects/callofcombat/application/components/http/DbSession.php(33): CHttpSession->init()
+#9 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/base/CModule.php(387): application\components\http\DbSession->init()
+#10 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/base/CModule.php(103): CModule->getComponent('session')
+#11 /home/zander/htdocs/www/projects/callofcombat/application/addons/language/behaviours/ApplicationLanguage.php(34): CModule->__get('session')
+#12 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/base/CComponent.php(561): application\addons\language\behaviours\ApplicationLanguage->useLanguage(Object(CEvent))
+#13 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/base/CApplication.php(207): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#14 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/base/CApplication.php(178): CApplication->onBeginRequest(Object(CEvent))
+#15 /home/zander/htdocs/www/projects/callofcombat/public_html/index.php(45): CApplication->run()
+#16 {main}
+REQUEST_URI=/projects/callofcombat/public_html/
+HTTP_REFERER=http://localhost/projects/callofcombat/
+---
+2014/09/16 16:58:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'callofcombat.coc_session' doesn't exist. The SQL statement executed was: DELETE FROM `coc_session` WHERE expire<:expire.
+in /home/zander/htdocs/www/projects/callofcombat/application/components/http/DbSession.php (33)
+in /home/zander/htdocs/www/projects/callofcombat/application/addons/language/behaviours/ApplicationLanguage.php (34)
+in /home/zander/htdocs/www/projects/callofcombat/public_html/index.php (45)
+2014/09/16 16:58:37 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'callofcombat.coc_messages' doesn't exist. The SQL statement executed was: SELECT t1.message AS message, t2.translation AS translation
+FROM coc_messages t1, coc_translations t2
+WHERE t1.id=t2.id AND t1.category=:category AND t2.language=:language.
+in /home/zander/htdocs/www/projects/callofcombat/application/views/home/index.php (8)
+in /home/zander/htdocs/www/projects/callofcombat/application/controllers/HomeController.php (21)
+in /home/zander/htdocs/www/projects/callofcombat/application/components/WebApplication.php (50)
+2014/09/16 16:58:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'callofcombat.coc_messages' doesn't exist. The SQL statement executed was: SELECT t1.message AS message, t2.translation AS translation
+FROM coc_messages t1, coc_translations t2
+WHERE t1.id=t2.id AND t1.category=:category AND t2.language=:language' in /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/i18n/CDbMessageSource.php(133): CDbCommand->queryAll()
+#2 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/i18n/CDbMessageSource.php(86): CDbMessageSource->loadMessagesFromDb('application', 'en_gb')
+#3 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/i18n/CMessageSource.php(103): CDbMessageSource->loadMessages('application', 'en_gb')
+#4 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/i18n/CMessageSource.php(85): CMessageSource->translateMessage('application', 'Welcome to <i>{...', 'en_gb')
+#5 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/YiiBase.php(584): CMessageSource->translate('application', 'Welcome to <i>{...', NULL)
+#6 /home/zander/htdocs/www/projects/callofcombat/application/views/home/index.php(8): YiiBase::t('application', 'Welcome to <i>{...', Array)
+#7 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CBaseController.php(126): require('/home/zander/ht...')
+#8 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/zander/ht...', NULL, true)
+#9 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/zander/ht...', NULL, true)
+#10 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#11 /home/zander/htdocs/www/projects/callofcombat/application/controllers/HomeController.php(21): CController->render('index')
+#12 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/actions/CInlineAction.php(49): application\controllers\HomeController->actionIndex()
+#13 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#15 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /home/zander/htdocs/www/projects/callofcombat/application/components/WebApplication.php(50): CController->run('')
+#17 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CWebApplication.php(141): application\components\WebApplication->runController('')
+#18 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /home/zander/htdocs/www/projects/callofcombat/public_html/index.php(45): CApplication->run()
+#20 {main}
+REQUEST_URI=/projects/callofcombat/public_html/
+HTTP_REFERER=http://localhost/projects/callofcombat/
+---
+2014/09/16 16:59:04 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'callofcombat.coc_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `coc_migration`.
+2014/09/16 17:01:51 [error] [exception.CException] exception 'CException' with message 'Alias "\application\components\form\active" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/YiiBase.php:282
+Stack trace:
+#0 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('\\application\\co...', true)
+#1 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(application\controllers\LoginController), '\\application\\co...', Array)
+#2 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CBaseController.php(189): CBaseController->createWidget('\\application\\co...', Array)
+#3 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/form/CForm.php(429): CBaseController->beginWidget('\\application\\co...', Array)
+#4 /home/zander/htdocs/www/projects/callofcombat/application/views/login/index.php(14): CForm->renderBegin()
+#5 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CBaseController.php(126): require('/home/zander/ht...')
+#6 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/zander/ht...', Array, true)
+#7 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/zander/ht...', Array, true)
+#8 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#9 /home/zander/htdocs/www/projects/callofcombat/application/controllers/LoginController.php(107): CController->render('index', Array)
+#10 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/actions/CInlineAction.php(49): application\controllers\LoginController->actionIndex()
+#11 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /home/zander/htdocs/www/projects/callofcombat/application/components/WebApplication.php(50): CController->run('')
+#15 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CWebApplication.php(141): application\components\WebApplication->runController('login')
+#16 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /home/zander/htdocs/www/projects/callofcombat/public_html/index.php(45): CApplication->run()
+#18 {main}
+REQUEST_URI=/projects/callofcombat/public_html/index.php/login
+HTTP_REFERER=http://localhost/projects/callofcombat/public_html/index.php
+---
+2014/09/22 14:41:25 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'callofcombat'' in /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CDbHttpSession.php(175): CModule->getComponent('db')
+#4 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CDbHttpSession.php(199): CDbHttpSession->getDbConnection()
+#5 [internal function]: CDbHttpSession->openSession('/var/lib/php5/s...', 'callofcombat')
+#6 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CHttpSession.php(114): session_start()
+#7 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/web/CHttpSession.php(88): CHttpSession->open()
+#8 /home/zander/htdocs/www/projects/callofcombat/application/components/http/DbSession.php(33): CHttpSession->init()
+#9 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/base/CModule.php(387): application\components\http\DbSession->init()
+#10 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/base/CModule.php(103): CModule->getComponent('session')
+#11 /home/zander/htdocs/www/projects/callofcombat/application/addons/language/behaviours/ApplicationLanguage.php(34): CModule->__get('session')
+#12 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/base/CComponent.php(561): application\addons\language\behaviours\ApplicationLanguage->useLanguage(Object(CEvent))
+#13 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/base/CApplication.php(207): CComponent->raiseEvent('onBeginRequest', Object(CEvent))
+#14 /home/zander/htdocs/www/projects/callofcombat/application/vendor/yiisoft/yii/framework/base/CApplication.php(178): CApplication->onBeginRequest(Object(CEvent))
+#15 /home/zander/htdocs/www/projects/callofcombat/public_html/index.php(45): CApplication->run()
+#16 {main}
+REQUEST_URI=/projects/callofcombat/public_html/
+HTTP_REFERER=http://192.168.1.27/projects/callofcombat/
+---
